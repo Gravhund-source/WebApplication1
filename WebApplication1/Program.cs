@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IHashing, Hashing>();
+//builder.Services.AddTransient<IHashing, Hashing>();
 
 //builder.Services.AddSingleton<IHashing, Hashing>();
 //builder.Services.AddScoped<IHashing, Hashing>();
@@ -27,11 +27,11 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<WebApplication1Context>();
 
 builder.Services.AddDbContext<testDBContext>(
-    options => options.UseSqlServer(testConnectionString));
+options => options.UseSqlServer(testConnectionString));
 
-
+builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
+builder.Services.AddTransient<Crypt>();
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequiredAuthenticatedUser", policy =>

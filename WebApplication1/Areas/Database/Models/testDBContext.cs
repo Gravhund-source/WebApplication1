@@ -16,7 +16,7 @@ namespace WebApplication1.Areas.Database.Models
         {
         }
 
-        public virtual DbSet<Login> Logins { get; set; }
+        public virtual DbSet<Todo> Todos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -29,19 +29,17 @@ namespace WebApplication1.Areas.Database.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Login>(entity =>
+            modelBuilder.Entity<Todo>(entity =>
             {
-                entity.Property(e => e.Password)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.ToTable("Todo");
 
-                entity.Property(e => e.Salt)
-                    .HasMaxLength(100)
-                    .IsFixedLength();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.User1)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.User).IsRequired();
             });
 
             OnModelCreatingPartial(modelBuilder);

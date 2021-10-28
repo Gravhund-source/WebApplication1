@@ -9,39 +9,39 @@ namespace WebApplication1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IHashing _iHashing;
-        private readonly IDataProtector _protector;
+        //private readonly IHashing _iHashing;
+        //private readonly IDataProtector _protector;
 
-        public HomeController(ILogger<HomeController> logger, IHashing iHashing, IDataProtectionProvider protector)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _iHashing = iHashing;
-            _protector = protector.CreateProtector("WebApplication1.HomeController.VictorGawron");
+            //_iHashing = iHashing;
+            //_protector = protector.CreateProtector("WebApplication1.HomeController.VictorGawron");
         }
 
-        public IActionResult Index( string Password, string CryptoName)
+        public IActionResult Index()
         {
             //Running Encryption....
-            IndexModel? indexModel = null;
-            string hashedValueAsString = null;
-            if (Password != null)
-            {
-                hashedValueAsString = _iHashing.BcryptHash(Password);
-                indexModel = new IndexModel() { HashedValueAsString = hashedValueAsString, OriginalText = Password };
-            }
+            //IndexModel? indexModel = null;
+            //string hashedValueAsString = null;
+            //if (Password != null)
+            //{
+            //    hashedValueAsString = _iHashing.BcryptHash(Password);
+            //    indexModel = new IndexModel() { HashedValueAsString = hashedValueAsString, OriginalText = Password };
+            //}
 
-            //Running Encryption....
-            string payload = "Victor Gawron";
-            if (CryptoName != null)
-            {
-                string protectedPayload = _protector.Protect(CryptoName);
+            ////Running Encryption....
+            ////string payload = "Victor Gawron";
+            //if (CryptoName != null)
+            //{
+            //    string protectedPayload = _protector.Protect(CryptoName);
 
-                string UnprotectedPayload = _protector.Unprotect(protectedPayload);
-                indexModel = new IndexModel() { OriginalEncryptionText = UnprotectedPayload, EncryptedValueAsString = protectedPayload };
-            }    
+            //    string UnprotectedPayload = _protector.Unprotect(protectedPayload);
+            //    indexModel = new IndexModel() { OriginalEncryptionText = UnprotectedPayload, EncryptedValueAsString = protectedPayload };
+            //}    
 
-
-            return View(model: indexModel);
+            return View();
+            //return View(model: indexModel);
 
         }
 
