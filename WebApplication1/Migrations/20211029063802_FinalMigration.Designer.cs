@@ -11,8 +11,8 @@ using WebApplication1.Areas.Database.Models;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(testDBContext))]
-    [Migration("20211028195029_Initial")]
-    partial class Initial
+    [Migration("20211029063802_FinalMigration")]
+    partial class FinalMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

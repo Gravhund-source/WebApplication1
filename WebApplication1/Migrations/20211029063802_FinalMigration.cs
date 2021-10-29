@@ -4,7 +4,7 @@
 
 namespace WebApplication1.Migrations
 {
-    public partial class Initial : Migration
+    public partial class FinalMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication1.Migrations.WebApplication1
 {
-    public partial class Initial : Migration
+    public partial class NyIdentityMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

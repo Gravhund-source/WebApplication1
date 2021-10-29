@@ -109,6 +109,8 @@ namespace WebApplication1.Areas.Database.Controllers
             {
                 return NotFound();
             }
+            todo.Description = _crypt.Decrypt(todo.Description, _protector);
+            todo.Title = _crypt.Decrypt(todo.Title, _protector);
             return View(todo);
         }
 
@@ -128,6 +130,8 @@ namespace WebApplication1.Areas.Database.Controllers
             {
                 try
                 {
+                    todo.Description = _crypt.Encrypt(todo.Description, _protector);
+                    todo.Title = _crypt.Encrypt(todo.Title, _protector);
                     _context.Update(todo);
                     await _context.SaveChangesAsync();
                 }

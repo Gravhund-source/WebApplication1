@@ -12,8 +12,8 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations.WebApplication1
 {
     [DbContext(typeof(WebApplication1Context))]
-    [Migration("20211028195117_Initial")]
-    partial class Initial
+    [Migration("20211029070611_NyIdentityMigration")]
+    partial class NyIdentityMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

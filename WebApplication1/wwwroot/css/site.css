@@ -20,3 +20,50 @@ body {
 header-bar-color {
     background-color: hotpink;
 }
+#login {
+    font-size: 1rem;
+    display: inline-block;
+    text-decoration: none;
+    border: hotpink 0.125em solid;
+    padding: 0.25em 1em;
+    color: hotpink;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0.25em;
+    text-shadow: 0 0 0.45em currentColor, 0 0 0.125em rgba(255, 255, 255, 30);
+    box-shadow: inset 0 0 1em 0 hotpink, 0 0 1em 0 hotpink;
+    position: relative;
+}
+
+#login::before {
+    content: "";
+    position: absolute;
+    background: hotpink;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: perspective(1em) rotateX(40deg) scale(1.5, 0.35);
+    filter: blur(1em);
+    opacity: 0.7;
+}
+
+#login::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em hotpink;
+    opacity: 0;
+}
+
+#login:hover, button.neon:focus {
+    background: hotpink;
+    color: black;
+    text-shadow: none;
+}
+
+#login:hover::after {
+        opacity: 1;
+    }
