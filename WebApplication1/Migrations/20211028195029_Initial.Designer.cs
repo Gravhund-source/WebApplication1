@@ -11,7 +11,7 @@ using WebApplication1.Areas.Database.Models;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(testDBContext))]
-    [Migration("20211028111509_Initial")]
+    [Migration("20211028195029_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,8 +34,11 @@ namespace WebApplication1.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("User")
                         .IsRequired()

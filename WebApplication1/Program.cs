@@ -26,6 +26,9 @@ builder.Services.AddDbContext<WebApplication1Context>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<WebApplication1Context>();
 
+/// <summary>
+/// HUSK: UNCOMMENT DEN HER OG LIBRARY
+/// </summary>
 builder.Services.AddDbContext<testDBContext>(
 options => options.UseSqlServer(testConnectionString));
 

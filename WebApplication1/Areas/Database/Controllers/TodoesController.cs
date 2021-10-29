@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Areas.Database.Models;
 using WebApplication1.Code;
-
 namespace WebApplication1.Areas.Database.Controllers
 {
     [Area("Database")]
@@ -40,6 +39,8 @@ namespace WebApplication1.Areas.Database.Controllers
                 foreach (Todo row in rows)
                 {
                     string TextEncrypted = row.Description;
+                    string TitleEncrypted = row.Title;
+                    row.Title = _crypt.Decrypt(TitleEncrypted, _protector);
                     row.Description = _crypt.Decrypt(TextEncrypted, _protector);
                 }
                 return View(rows);
@@ -79,11 +80,13 @@ namespace WebApplication1.Areas.Database.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,User,Description")] Todo todo)
+        public async Task<IActionResult> Create([Bind("Id,User,Title,Description")] Todo todo)
         {
             if (ModelState.IsValid)
             {
                 string description = todo.Description;
+                string title = todo.Title;
+                todo.Title = _crypt.Encrypt(title, _protector);
                 todo.Description = _crypt.Encrypt(description, _protector);
 
                 _context.Add(todo);
@@ -114,7 +117,7 @@ namespace WebApplication1.Areas.Database.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,User,Description")] Todo todo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,User,Title,Description")] Todo todo)
         {
             if (id != todo.Id)
             {

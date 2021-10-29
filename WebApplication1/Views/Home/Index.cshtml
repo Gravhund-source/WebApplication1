@@ -2,39 +2,6 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<div>Hash</div>
 <div class="text-center">
-    <form asp-controller="" asp-action="Index" method="post">
-        <div style="margin-top: 5px">
-            <input type="password" name="Password" style="width:280px;" />
-        </div>
-        <div style="margin-top: 5px">
-            <input type="submit" name="" style="height:50px; width:280px;" />
-        </div>
-    </form>
-    @if (Model != null)
-    {
-        <h1 class="display-4">@Model.OriginalText</h1>
-        <h1 class="display-4">@Model.HashedValueAsString</h1>
-    }
-
-    <hr style="background-color: black"/>
-    <div style="text-align: left"></div>
-    <div>Crypt</div>
-    <form asp-controller="" asp-action="Index" method="post">
-        <div style="margin-top: 5px">
-            <input type="text" name="CryptoName" style="width:280px;" />
-        </div>
-        <div style="margin-top: 5px">
-            <input type="submit" name="" style="height:50px; width:280px;" />
-        </div>
-    </form>
-
-    @if (Model != null)
-    {
-        <h1 class="display-4">@Model.OriginalEncryptionText</h1>
-        <h1 class="display-4">@Model.EncryptedValueAsString</h1>
-    }
-
-
+    <h1>Velkommen til forsiden</h1>
 </div>

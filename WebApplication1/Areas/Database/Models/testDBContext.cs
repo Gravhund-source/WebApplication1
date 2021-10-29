@@ -35,9 +35,9 @@ namespace WebApplication1.Areas.Database.Models
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Description)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.Description).IsRequired();
+
+                entity.Property(e => e.Title).IsRequired();
 
                 entity.Property(e => e.User).IsRequired();
             });
